@@ -100,15 +100,13 @@ export function AppChrome({ children }: Props) {
       )}
       <main className={contentClass}>
         <div className={styles.panes}>
-          {!state.chromeless && state.megaMenuDocked && state.megaMenuOpen && (
-            <MegaMenu className={styles.dockedMegaMenu} onClose={() => chrome.setMegaMenuOpen(false)} />
-          )}
+          {!state.chromeless && <MegaMenu className={styles.dockedMegaMenu} onClose={() => {}} />}
           <div className={styles.pageContainer} id="pageContent">
             {children}
           </div>
         </div>
       </main>
-      {!state.chromeless && !state.megaMenuDocked && <AppChromeMenu />}
+      {!state.chromeless && <AppChromeMenu />}
       {!state.chromeless && <CommandPalette />}
       {shouldShowReturnToPrevious && state.returnToPrevious && (
         <ReturnToPrevious href={state.returnToPrevious.href} title={state.returnToPrevious.title} />
@@ -135,12 +133,8 @@ const getStyles = (theme: GrafanaTheme2) => {
     dockedMegaMenu: css({
       background: theme.colors.background.primary,
       borderRight: `1px solid ${theme.colors.border.weak}`,
-      display: 'none',
+      display: 'block',
       zIndex: theme.zIndex.navbarFixed,
-
-      [theme.breakpoints.up('xl')]: {
-        display: 'block',
-      },
     }),
     topNav: css({
       display: 'flex',
