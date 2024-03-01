@@ -27,8 +27,6 @@ export const MegaMenu = React.memo(
     const { chrome } = useGrafana();
     const state = chrome.useState();
 
-    console.log(styles);
-
     // Remove profile + help from tree
     const navItems = navTree
       .filter(

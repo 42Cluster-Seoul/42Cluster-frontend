@@ -29,6 +29,8 @@ export function AppChrome({ children }: Props) {
   const theme = useTheme2();
   const styles = useStyles2(getStyles);
 
+  console.log(state);
+
   const dockedMenuBreakpoint = theme.breakpoints.values.xl;
   const dockedMenuLocalStorageState = store.getBool(DOCKED_LOCAL_STORAGE_KEY, true);
   useMediaQueryChange({
@@ -97,8 +99,10 @@ export function AppChrome({ children }: Props) {
         </>
       )}
       <main className={contentClass}>
-        <div>
-          {<MegaMenu className={styles.dockedMegaMenu} onClose={() => chrome.setMegaMenuOpen(false)} />}
+        <div className={styles.panes}>
+          {!state.chromeless && state.megaMenuDocked && state.megaMenuOpen && (
+            <MegaMenu className={styles.dockedMegaMenu} onClose={() => chrome.setMegaMenuOpen(false)} />
+          )}
           <div className={styles.pageContainer} id="pageContent">
             {children}
           </div>
@@ -131,7 +135,7 @@ const getStyles = (theme: GrafanaTheme2) => {
     dockedMegaMenu: css({
       background: theme.colors.background.primary,
       borderRight: `1px solid ${theme.colors.border.weak}`,
-      // display: 'none',
+      display: 'none',
       zIndex: theme.zIndex.navbarFixed,
 
       [theme.breakpoints.up('xl')]: {
@@ -155,9 +159,9 @@ const getStyles = (theme: GrafanaTheme2) => {
       flexGrow: 1,
       minHeight: 0,
       flexDirection: 'column',
-      [theme.breakpoints.up('md')]: {
-        flexDirection: 'row',
-      },
+      // [theme.breakpoints.up('md')]: {
+      //   flexDirection: 'row',
+      // },
     }),
     pageContainer: css({
       label: 'page-container',
