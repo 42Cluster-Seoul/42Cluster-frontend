@@ -5,12 +5,13 @@ import React, { useState } from 'react';
 // Components
 import { GrafanaTheme2 } from '@grafana/data';
 import { config } from '@grafana/runtime';
-import { Alert, HorizontalGroup, LinkButton, useStyles2, Button } from '@grafana/ui';
+import { Alert, HorizontalGroup, LinkButton, useStyles2 } from '@grafana/ui';
 import { Branding } from 'app/core/components/Branding/Branding';
 import { t, Trans } from 'app/core/internationalization';
 
 import { ChangePassword } from '../ForgottenPassword/ChangePassword';
 
+import { LoginButton42Auth } from './LoginButton42Auth';
 import LoginCtrl from './LoginCtrl';
 import { LoginForm } from './LoginForm';
 import { LoginLayout, InnerBox } from './LoginLayout';
@@ -66,17 +67,7 @@ export const LoginPage = () => {
           <div className={styles.loginField}>
             {radioValue === 'user' && (
               <InnerBox>
-                <Button
-                  type="submit"
-                  data-testid="n/a"
-                  className={styles.submitButton}
-                  disabled={isLoggingIn}
-                  onClick={() => {
-                    window.location.href = 'https://www.naver.com';
-                  }}
-                >
-                  {isLoggingIn ? 'Logging in...' : 'Log in with 42 Auth'}
-                </Button>
+                <LoginButton42Auth />
               </InnerBox>
             )}
             {radioValue === 'administrator' && !isChangingPassword && (
@@ -134,11 +125,6 @@ const getStyles = (theme: GrafanaTheme2) => {
     }),
 
     alert: css({
-      width: '100%',
-    }),
-
-    submitButton: css({
-      justifyContent: 'center',
       width: '100%',
     }),
 

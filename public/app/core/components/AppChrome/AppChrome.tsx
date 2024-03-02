@@ -29,8 +29,6 @@ export function AppChrome({ children }: Props) {
   const theme = useTheme2();
   const styles = useStyles2(getStyles);
 
-  console.log(state);
-
   const dockedMenuBreakpoint = theme.breakpoints.values.xl;
   const dockedMenuLocalStorageState = store.getBool(DOCKED_LOCAL_STORAGE_KEY, true);
   useMediaQueryChange({
