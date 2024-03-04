@@ -18,7 +18,8 @@ tsconfig.tsbuildinfo
 __debug_bin*
 
 # Yarn
-.yarn/
+#.yarn/
+.yarn/cache
 !.yarn/patches
 !.yarn/releases
 !.yarn/plugins
