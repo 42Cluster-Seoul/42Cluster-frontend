@@ -58,7 +58,7 @@ require (
 	github.com/google/go-cmp v0.6.0 // @grafana/backend-platform
 	github.com/google/uuid v1.6.0 // @grafana/backend-platform
 	github.com/google/wire v0.5.0 // @grafana/backend-platform
-	github.com/gorilla/websocket v1.5.0 // @grafana/grafana-app-platform-squad
+	github.com/gorilla/websocket v1.5.1 // @grafana/grafana-app-platform-squad
 	github.com/grafana/alerting v0.0.0-20240222104113-abfafef9a7d2 // @grafana/alerting-squad-backend
 	github.com/grafana/cuetsy v0.1.11 // @grafana/grafana-as-code
 	github.com/grafana/grafana-aws-sdk v0.23.1 // @grafana/aws-datasources
