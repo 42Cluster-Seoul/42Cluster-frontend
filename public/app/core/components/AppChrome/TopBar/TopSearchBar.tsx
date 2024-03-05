@@ -81,7 +81,7 @@ const getStyles = (theme: GrafanaTheme2) => ({
     justifyContent: 'space-between',
 
     [theme.breakpoints.up('sm')]: {
-      gridTemplateColumns: '1.5fr 1.5fr', // search should not be smaller than 240px
+      gridTemplateColumns: '1fr 2fr', // search should not be smaller than 240px
       display: 'grid',
 
       justifyContent: 'flex-start',
