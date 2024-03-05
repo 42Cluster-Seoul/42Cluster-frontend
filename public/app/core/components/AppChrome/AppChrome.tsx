@@ -15,7 +15,7 @@ import { KioskMode } from 'app/types';
 import { AppChromeMenu } from './AppChromeMenu';
 import { DOCKED_LOCAL_STORAGE_KEY, DOCKED_MENU_OPEN_LOCAL_STORAGE_KEY } from './AppChromeService';
 import { MegaMenu } from './MegaMenu/MegaMenu';
-import { NavToolbar } from './NavToolbar/NavToolbar';
+// import { NavToolbar } from './NavToolbar/NavToolbar';
 import { ReturnToPrevious } from './ReturnToPrevious/ReturnToPrevious';
 import { TopSearchBar } from './TopBar/TopSearchBar';
 import { TOP_BAR_LEVEL_HEIGHT } from './types';
@@ -49,9 +49,9 @@ export function AppChrome({ children }: Props) {
     [styles.contentChromeless]: state.chromeless,
   });
 
-  const handleMegaMenu = () => {
-    chrome.setMegaMenuOpen(!state.megaMenuOpen);
-  };
+  // const handleMegaMenu = () => {
+  //   chrome.setMegaMenuOpen(!state.megaMenuOpen);
+  // };
 
   const { pathname, search } = locationService.getLocation();
   const url = pathname + search;
@@ -85,7 +85,7 @@ export function AppChrome({ children }: Props) {
           <div className={cx(styles.topNav)}>
             {!searchBarHidden && <TopSearchBar />}
             {!state.chromeless && <MegaMenu className={styles.dockedMegaMenu} onClose={() => {}} />}
-            <NavToolbar
+            {/* <NavToolbar
               searchBarHidden={searchBarHidden}
               sectionNav={state.sectionNav.node}
               pageNav={state.pageNav}
@@ -93,7 +93,7 @@ export function AppChrome({ children }: Props) {
               onToggleSearchBar={chrome.onToggleSearchBar}
               onToggleMegaMenu={handleMegaMenu}
               onToggleKioskMode={chrome.onToggleKioskMode}
-            />
+            /> */}
           </div>
         </>
       )}
