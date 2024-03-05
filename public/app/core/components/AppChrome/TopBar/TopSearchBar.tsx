@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 // import { cloneDeep } from 'lodash';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { GrafanaTheme2, locationUtil, textUtil } from '@grafana/data';
@@ -25,6 +25,7 @@ export const TopSearchBar = React.memo(function TopSearchBar() {
   const styles = useStyles2(getStyles);
   const navIndex = useSelector((state) => state.navIndex);
   const location = useLocation();
+  const [serviceName, setServiceName] = useState('');
 
   // const helpNode = cloneDeep(navIndex['help']);
   // const enrichedHelpNode = helpNode ? enrichHelpItem(helpNode) : undefined;
@@ -35,6 +36,12 @@ export const TopSearchBar = React.memo(function TopSearchBar() {
     homeUrl = textUtil.sanitizeUrl(locationUtil.getUrlForPartial(location, { forceLogin: 'true' }));
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      setServiceName('42 Morning glory');
+    }, 500);
+  }, []);
+
   return (
     <div className={styles.layout}>
       <TopSearchBarSection>
@@ -42,6 +49,9 @@ export const TopSearchBar = React.memo(function TopSearchBar() {
           <Branding.MenuLogo className={styles.img} />
         </a>
         <OrganizationSwitcher />
+        <div className={styles.serviceName}>
+          <b>{serviceName ? serviceName : ''}</b>
+        </div>
       </TopSearchBarSection>
 
       <TopSearchBarSection align="right">
@@ -102,5 +112,12 @@ const getStyles = (theme: GrafanaTheme2) => ({
       marginRight: 0,
       width: '30px',
     },
+  }),
+  serviceName: css({
+    width: '100%',
+    minWidth: '50px',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
   }),
 });
