@@ -3,7 +3,7 @@ import React from 'react';
 
 import { GrafanaTheme2, NavModelItem } from '@grafana/data';
 import { Components } from '@grafana/e2e-selectors';
-import { Icon, ToolbarButton, useStyles2 } from '@grafana/ui';
+import { ToolbarButton, useStyles2 } from '@grafana/ui';
 // import { useGrafana } from 'app/core/context/GrafanaContext';
 import { t } from 'app/core/internationalization';
 // import { HOME_NAV_ID } from 'app/core/reducers/navModel';
@@ -13,7 +13,7 @@ import { t } from 'app/core/internationalization';
 // import { buildBreadcrumbs } from '../../Breadcrumbs/utils';
 import { TOP_BAR_LEVEL_HEIGHT } from '../types';
 
-import { NavToolbarSeparator } from './NavToolbarSeparator';
+// import { NavToolbarSeparator } from './NavToolbarSeparator';
 
 export const TOGGLE_BUTTON_ID = 'mega-menu-toggle';
 
@@ -70,14 +70,14 @@ export function NavToolbar({
             icon="monitor"
           />
         )}
-        {actions && <NavToolbarSeparator />}
+        {/* {actions && <NavToolbarSeparator />}
         <ToolbarButton
           onClick={onToggleSearchBar}
           narrow
           title={t('navigation.toolbar.toggle-search-bar', 'Toggle top search bar')}
         >
           <Icon name={searchBarHidden ? 'angle-down' : 'angle-up'} size="xl" />
-        </ToolbarButton>
+        </ToolbarButton> */}
       </div>
     </div>
   );
