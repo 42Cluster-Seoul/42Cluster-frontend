@@ -84,6 +84,7 @@ export function AppChrome({ children }: Props) {
           </LinkButton>
           <div className={cx(styles.topNav)}>
             {!searchBarHidden && <TopSearchBar />}
+            {!state.chromeless && <MegaMenu className={styles.dockedMegaMenu} onClose={() => {}} />}
             <NavToolbar
               searchBarHidden={searchBarHidden}
               sectionNav={state.sectionNav.node}
@@ -98,7 +99,6 @@ export function AppChrome({ children }: Props) {
       )}
       <main className={contentClass}>
         <div className={styles.panes}>
-          {!state.chromeless && <MegaMenu className={styles.dockedMegaMenu} onClose={() => {}} />}
           <div className={styles.pageContainer} id="pageContent">
             {children}
           </div>
