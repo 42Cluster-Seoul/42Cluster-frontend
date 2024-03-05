@@ -80,6 +80,7 @@ export const getLoginStyles = (theme: GrafanaTheme2) => {
       alignItems: 'center',
       justifyContent: 'center',
       minWidth: '100%',
+      borderRadius: theme.shape.borderRadius(5),
     }),
     container: css({
       minHeight: '100%',

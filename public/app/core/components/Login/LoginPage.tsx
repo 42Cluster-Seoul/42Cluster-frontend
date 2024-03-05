@@ -41,8 +41,8 @@ export const LoginPage = () => {
       }) => (
         <LoginLayout isChangingPassword={isChangingPassword}>
           {!isChangingPassword && ( // login radio group
-            <fieldset style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
-              <div style={{ display: 'flex', gap: '4px' }}>
+            <fieldset className={styles.radioGroup}>
+              <div className={styles.radioEach}>
                 <input
                   type="radio"
                   id="user"
@@ -52,7 +52,7 @@ export const LoginPage = () => {
                 />
                 <label htmlFor="user">user</label>
               </div>
-              <div style={{ display: 'flex', gap: '4px' }}>
+              <div className={styles.radioEach}>
                 <input
                   type="radio"
                   id="administrator"
@@ -126,6 +126,17 @@ const getStyles = (theme: GrafanaTheme2) => {
 
     alert: css({
       width: '100%',
+    }),
+
+    radioGroup: css({
+      display: 'flex',
+      gap: '12px',
+      justifyContent: 'center',
+    }),
+
+    radioEach: css({
+      display: 'flex',
+      gap: '4px',
     }),
 
     loginField: css({
