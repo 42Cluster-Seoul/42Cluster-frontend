@@ -121,6 +121,7 @@ const getStyles = (theme: GrafanaTheme2) => {
       paddingTop: TOP_BAR_LEVEL_HEIGHT * 3,
       flexGrow: 1,
       height: '100%',
+      alignItems: 'center',
     }),
     contentNoSearchBar: css({
       paddingTop: TOP_BAR_LEVEL_HEIGHT,
@@ -147,7 +148,8 @@ const getStyles = (theme: GrafanaTheme2) => {
       label: 'page-panes',
       display: 'flex',
       height: '100%',
-      width: '100%',
+      width: '95%',
+      maxWidth: '1100px',
       flexGrow: 1,
       minHeight: 0,
       flexDirection: 'column',
