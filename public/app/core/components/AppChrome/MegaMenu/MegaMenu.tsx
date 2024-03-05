@@ -123,7 +123,7 @@ const getStyles = (theme: GrafanaTheme2) => ({
   itemList: css({
     boxSizing: 'border-box',
     display: 'flex',
-    gap: 'var(--control-medium-gap, 0.5rem)',
+    gap: theme.spacing(1),
     flexDirection: 'row',
     listStyleType: 'none',
     // padding: theme.spacing(1, 1, 2, 1),

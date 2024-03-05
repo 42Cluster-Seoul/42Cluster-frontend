@@ -186,6 +186,14 @@ const getStyles = (theme: GrafanaTheme2) => ({
     minWidth: 0,
     // paddingLeft: theme.spacing(1.5),
     paddingRight: theme.spacing(1),
+
+    '&:hover, &:focus-visible': {
+      // color: theme.colors.text.primary,
+      // textDecoration: 'underline',
+      backgroundColor: theme.colors.background.secondary,
+      borderRadius: '0.375rem',
+      padding: theme.spacing(0.5, 1, 0.5, 1),
+    },
   }),
   labelWrapperWithIcon: css({
     paddingLeft: theme.spacing(1),
