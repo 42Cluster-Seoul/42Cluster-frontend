@@ -52,6 +52,7 @@ export const QuickAdd = ({}: Props) => {
           iconOnly
           icon={isSmallScreen ? 'plus-circle' : 'plus'}
           isOpen={isSmallScreen ? undefined : isOpen}
+          className={styles.quickAddHover}
           aria-label="New"
         />
       </Dropdown>
@@ -68,6 +69,27 @@ const getStyles = (theme: GrafanaTheme2) => ({
   buttonText: css({
     [theme.breakpoints.down('md')]: {
       display: 'none',
+    },
+  }),
+
+  quickAddHover: css({
+    border: '1px solid',
+    borderColor: theme.colors.border.strong,
+    borderRadius: '0.375rem',
+
+    '&:focus, &:focus-visible': {
+      outline: 'none',
+      boxShadow: 'none',
+      transition: 'none',
+    },
+    '&:focus:not(:focus-visible)': {
+      outline: 'none',
+      boxShadow: `none`,
+    },
+    '&:hover': {
+      boxShadow: 'none',
+      borderColor: theme.colors.text.disabled,
+      background: 'none',
     },
   }),
   separator: css({
