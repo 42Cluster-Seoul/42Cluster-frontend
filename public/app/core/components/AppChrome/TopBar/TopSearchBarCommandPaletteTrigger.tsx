@@ -94,18 +94,27 @@ const getStyles = (theme: GrafanaTheme2) => {
     shortcut: css({
       fontSize: theme.typography.bodySmall.fontSize,
     }),
+    // TODO : z-index와 hover 고려해야 함
     fakeInput: css([
       baseStyles.input,
       {
         textAlign: 'left',
         paddingLeft: 28,
         color: theme.colors.text.disabled,
+        borderColor: theme.colors.border.strong,
+        borderRadius: '0.375rem',
 
         // We want the focus styles to appear only when tabbing through, not when clicking the button
         // (and when focus is restored after command palette closes)
         '&:focus': {
           outline: 'unset',
           boxShadow: 'unset',
+        },
+
+        '&:hover': {
+          boxShadow: 'none',
+          borderColor: theme.colors.text.disabled,
+          background: 'none',
         },
 
         '&:focus-visible': css`

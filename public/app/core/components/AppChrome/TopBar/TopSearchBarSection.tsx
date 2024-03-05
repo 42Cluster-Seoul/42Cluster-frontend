@@ -38,7 +38,7 @@ export function TopSearchBarSection({ children, align = 'left' }: TopSearchBarSe
 const getStyles = (theme: GrafanaTheme2) => ({
   wrapper: css({
     display: 'flex',
-    gap: theme.spacing(0.5),
+    gap: theme.spacing(1.5),
     alignItems: 'center',
   }),
 
