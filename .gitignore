@@ -14,7 +14,7 @@ node_modules
 # vendor/
 # /docs/menu.yaml
 # /requests
-# tsconfig.tsbuildinfo
+tsconfig.tsbuildinfo
 # __debug_bin*
 
 # Yarn
