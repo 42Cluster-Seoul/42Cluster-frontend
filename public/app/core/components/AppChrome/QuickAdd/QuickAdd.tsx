@@ -1,27 +1,56 @@
 import { css } from '@emotion/css';
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 
 import { GrafanaTheme2 } from '@grafana/data';
 import { reportInteraction } from '@grafana/runtime';
 import { Menu, Dropdown, useStyles2, ToolbarButton } from '@grafana/ui';
 // import { useMediaQueryChange } from 'app/core/hooks/useMediaQueryChange';
-import { useSelector } from 'app/types';
+// import { useSelector } from 'app/types';
 
 import { NavToolbarSeparator } from '../NavToolbar/NavToolbarSeparator';
 
-import { findCreateActions } from './utils';
+// import { findCreateActions } from './utils';
 
 export interface Props {}
 
 export const QuickAdd = ({}: Props) => {
   const styles = useStyles2(getStyles);
   // const theme = useTheme2();
-  const navBarTree = useSelector((state) => state.navBarTree);
+  // const navBarTree = useSelector((state) => state.navBarTree);
   // const breakpoint = theme.breakpoints.values.md;
 
   const [isOpen, setIsOpen] = useState(false);
   // const [isSmallScreen, setIsSmallScreen] = useState(!window.matchMedia(`(min-width: ${breakpoint}px)`).matches);
-  const createActions = useMemo(() => findCreateActions(navBarTree), [navBarTree]);
+  // const createActions = useMemo(() => findCreateActions(navBarTree), [navBarTree]);
+
+  const createActions = [
+    {
+      id: 'dashboards/new',
+      text: 'New dashboard',
+      icon: 'plus',
+      url: '/dashboard/new',
+      hideFromTabs: true,
+      isCreateAction: true,
+    },
+    {
+      id: 'dashboards/import',
+      text: 'Import dashboard',
+      subTitle: 'Import dashboard from file or Grafana.com',
+      icon: 'plus',
+      url: '/dashboard/import',
+      hideFromTabs: true,
+      isCreateAction: true,
+    },
+    {
+      id: 'alert',
+      text: 'Create alert rule',
+      subTitle: 'Create an alert rule',
+      icon: 'plus',
+      url: '/alerting/new',
+      hideFromTabs: true,
+      isCreateAction: true,
+    },
+  ];
 
   // useMediaQueryChange({
   //   breakpoint,
@@ -45,14 +74,14 @@ export const QuickAdd = ({}: Props) => {
     );
   };
 
-  return createActions.length > 0 ? (
+  return (
     <>
       <Dropdown overlay={MenuActions} placement="bottom-end" onVisibleChange={setIsOpen}>
         <ToolbarButton iconOnly icon="plus" isOpen={isOpen} className={styles.quickAddHover} aria-label="New" />
       </Dropdown>
       <NavToolbarSeparator className={styles.separator} />
     </>
-  ) : null;
+  );
 };
 
 const getStyles = (theme: GrafanaTheme2) => ({
@@ -90,5 +119,16 @@ const getStyles = (theme: GrafanaTheme2) => ({
     [theme.breakpoints.down('sm')]: {
       display: 'none',
     },
+  }),
+
+  header: css({
+    fontSize: theme.typography.h5.fontSize,
+    fontWeight: theme.typography.h5.fontWeight,
+    padding: theme.spacing(0.5, 1),
+    whiteSpace: 'nowrap',
+  }),
+  subTitle: css({
+    color: theme.colors.text.secondary,
+    fontSize: theme.typography.bodySmall.fontSize,
   }),
 });
