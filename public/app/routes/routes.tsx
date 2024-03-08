@@ -17,6 +17,7 @@ import { AccessControlAction, DashboardRoutes } from 'app/types';
 import { SafeDynamicImport } from '../core/components/DynamicImports/SafeDynamicImport';
 import { RouteDescriptor } from '../core/navigation/types';
 import { getPublicDashboardRoutes } from '../features/dashboard/routes';
+import { getPublicDeploymentRoutes } from '../features/deployment/routes';
 
 export const extraRoutes: RouteDescriptor[] = [];
 
@@ -486,6 +487,14 @@ export function getAppRoutes(): RouteDescriptor[] {
       ),
     },
     // {
+    //   path: '/deployment',
+    //   pageClass: 'page-dashboard',
+    //   routeName: DashboardRoutes.Home,
+    //   component: SafeDynamicImport(
+    //     () => import(/* webpackChunkName: "DashboardPageProxy" */ '../features/deployment/Deployment')
+    //   ),
+    // },
+    // {
     //   path: '/explore/metrics',
     //   chromeless: false,
     //   exact: false,
@@ -499,6 +508,7 @@ export function getAppRoutes(): RouteDescriptor[] {
     // ...getProfileRoutes(),
     ...extraRoutes,
     ...getPublicDashboardRoutes(),
+    ...getPublicDeploymentRoutes(),
     // ...getDataConnectionsRoutes(),
     {
       path: '/*',
