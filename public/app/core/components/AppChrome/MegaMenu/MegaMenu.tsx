@@ -19,6 +19,23 @@ export interface Props extends DOMAttributes {
   onClose: () => void;
 }
 
+const addPriority = (menuName: string) => {
+  switch (menuName) {
+    case 'Home':
+      return 1;
+    case 'Dashboards':
+      return 2;
+    case 'Alerting':
+      return 3;
+    case 'Deployment':
+      return 4;
+    case 'Administration':
+      return 5;
+    default:
+      return 9;
+  }
+};
+
 export const MegaMenu = React.memo(
   forwardRef<HTMLDivElement, Props>(({ onClose, ...restProps }, ref) => {
     const navTree = useSelector((state) => state.navBarTree);
@@ -29,6 +46,8 @@ export const MegaMenu = React.memo(
 
     // Remove profile + help from tree
     const navItems = navTree
+      .map((navItem) => ({ ...navItem, priority: addPriority(navItem.text) }))
+      .sort((a, b) => a.priority - b.priority)
       .filter(
         (item) =>
           item.id !== 'profile' &&

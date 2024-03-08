@@ -29,7 +29,7 @@ export function MegaMenuItem({ link, activeItem, level = 0, onClick }: Props) {
   // const location = useLocation();
   const FeatureHighlightWrapper = link.highlightText ? FeatureHighlight : React.Fragment;
   const hasActiveChild = hasChildMatch(link, activeItem);
-  const isActive = link === activeItem || (level === MAX_DEPTH && hasActiveChild);
+  const isActive = link.text === activeItem?.text || (level === MAX_DEPTH && hasActiveChild);
   // const [sectionExpanded, setSectionExpanded] = useLocalStorage(
   //   `grafana.navigation.expanded[${link.text}]`,
   //   Boolean(hasActiveChild)
