@@ -47,11 +47,11 @@ export const TopSearchBar = React.memo(function TopSearchBar() {
       <TopSearchBarSection>
         <a className={styles.logo} href={homeUrl} title="Go to home">
           <Branding.MenuLogo className={styles.img} />
+          <div className={styles.serviceName}>
+            <b>{serviceName ? serviceName : ''}</b>
+          </div>
         </a>
         <OrganizationSwitcher />
-        <div className={styles.serviceName}>
-          <b>{serviceName ? serviceName : ''}</b>
-        </div>
       </TopSearchBarSection>
 
       <TopSearchBarSection align="right">
@@ -103,6 +103,7 @@ const getStyles = (theme: GrafanaTheme2) => ({
   }),
   logo: css({
     display: 'flex',
+    gap: theme.spacing(1.5),
   }),
   profileButton: css({
     padding: theme.spacing(0, 0.25),
