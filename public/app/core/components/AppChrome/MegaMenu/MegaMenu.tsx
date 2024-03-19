@@ -39,6 +39,7 @@ const addPriority = (menuName: string) => {
 export const MegaMenu = React.memo(
   forwardRef<HTMLDivElement, Props>(({ onClose, ...restProps }, ref) => {
     const navTree = useSelector((state) => state.navBarTree);
+    const backendState = useSelector((state) => state.fourtyTwoClusterBackend);
     const styles = useStyles2(getStyles);
     const location = useLocation();
     const { chrome } = useGrafana();
@@ -46,7 +47,12 @@ export const MegaMenu = React.memo(
 
     // Remove profile + help from tree
     const navItems = navTree
-      .map((navItem) => ({ ...navItem, priority: addPriority(navItem.text) }))
+      .map((navItem) => ({
+        ...navItem,
+        priority: addPriority(navItem.text),
+        url:
+          navItem.id === 'dashboards/browse' && backendState.isValid ? `/d/${backendState.dashboardUID}` : navItem.url,
+      }))
       .sort((a, b) => a.priority - b.priority)
       .filter(
         (item) =>
